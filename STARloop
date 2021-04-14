@@ -1,0 +1,17 @@
+# For every name in the file
+while read SAMPLE; do
+
+# Get single file name
+FILEBASE=$(basename "${SAMPLE%.fq.rm_bl}")
+
+# Make new directory for every sample
+mkdir /path_to_later/gap_table/$FILEBASE.STAR
+
+# Enter the new directory
+cd /path_to_later/gap_table/$FILEBASE.STAR
+
+# Align with STAR 
+/path_to_STAR/STAR 
+--outFilterType BySJout --outFilterMismatchNmax 10 --outFilterMismatchNoverLmax 0.04 --alignEndsType EndToEnd --runThreadN 8 --outSAMtype BAM SortedByCoordinate --alignSJDBoverhangMin 4 --alignIntronMax 300000 --alignSJoverhangMin 8 --alignIntronMin 20 --genomeDir /path_to/star_index_hg38_hiv_r100/ --sjdbOverhang 100 --quantMode GeneCounts --sjdbGTFfile/path_to/hg38_pnL43_fusion_annotation.gtf --outFileNamePrefix /path_to/gap_table/$FILEBASE.STAR/ --readFilesIn $SAMPLE > STARaligning.log 
+
+done </path_to_filename_file/filename
