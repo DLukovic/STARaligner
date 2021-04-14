@@ -31,4 +31,20 @@ Genome sequence from Ensemble/iGenomes [here](https://www.ensembl.org/Sus_scrofa
 Name of the chromosomes in genome sequence and annotation: **"1,2,3.."**
 
 
-## Step 2: 
+## Step 2: Mapping the reads
+
+        STAR \
+        --outSAMattributes All \
+        --outSAMtype BAM SortedByCoordinate \
+        --quantMode GeneCounts \
+        --readFilesCommand zcat \
+        --runThreadN $NCPU \
+        --sjdbGTFfile $GTFFILE \
+        --outReadsUnmapped Fastx \
+        --outMultimapperOrder Random \
+        --outWigType wiggle \
+        --genomeDir $GENOMEDIR \
+        --readFilesIn ${INPUTDIR}/${OUTPREFIX}_1.fastq.gz ${INPUTDIR}/${OUTPREFIX}_2.fastq.gz \
+        --outFileNamePrefix $OUTPREFIX
+
+
