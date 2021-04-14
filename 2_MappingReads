@@ -1,0 +1,30 @@
+STAR \
+--outSAMattributes All \
+--outSAMtype BAM SortedByCoordinate \
+--quantMode GeneCounts \
+--readFilesCommand zcat \
+--runThreadN $NCPU \
+--sjdbGTFfile $GTFFILE \
+--outReadsUnmapped Fastx \
+--outMultimapperOrder Random \
+--outWigType wiggle \
+--genomeDir $GENOMEDIR \
+--readFilesIn ${INPUTDIR}/${OUTPREFIX}_1.fastq.gz ${INPUTDIR}/${OUTPREFIX}_2.fastq.gz \
+--outFileNamePrefix $OUTPREFIX
+
+Notes:
+--quantMode GeneCounts - this is an incredibly useful flag, and tells STAR to count the reads mapping to genes we provide in the annotation file.
+This is how we will get a count table for our data. The output file will have counts to genes as if our data was unstranded, “positively” and “negatively” stranded. If the data was generated using a strand-retaining protocol, one of these will be the appropriate parameter to use, while the other will provide an indication of the level of “antisense” transcription, usually a measure of how well the strand-selection protocol worked. If the number of reads mapping to genes in each of the count tables was similar, AND a stranded protocol was used, this may indicate that the stand selection did not work very well, and it may be more appropriate to treat the data as if it were unstranded!
+
+Previously, before STAR incorporated this functionality, tools like htseq-count and featureCounts were used to quantitate reads to genes, and some researchers prefer to use them to this day. However, for most users, STAR’s quantification works just as well, and doesn’t require installing/using/debugging additional tools.
+
+--outWigType wiggle - this will also tell STAR to output a normalised, strand-specific wiggle file (if you want unnormalised or non-strand-specific, there are flags for this). This file can be converted to bigWig, and used to visualise the data in UCSC genome browser.
+
+--outSAMattributes All - output all flags in the last field of the sam file. Not essential for differential gene expression analysis, but very helfpul for mapping quality control 
+
+--outSAMtype BAM SortedByCoordinate - this will produce a mapping file in which reads are sorted by coordinate, NOT read name. This is helpful as we can directly index the bam file using samtools, and proceed to visualise it in IGV, without needing to run samtools sort. It will also output a compressed, coordinate-sorted bam, instead of a much larger unsorted sam file
+
+--outReadsUnmapped Fastx - will generate a fastq file of reads that STAR failed to map
+
+--outMultimapperOrder Random
+
