@@ -10,7 +10,8 @@ STAR \
 --outWigType wiggle \
 --genomeDir $GENOMEDIR \
 --readFilesIn ${INPUTDIR}/${OUTPREFIX}_1.fastq.gz ${INPUTDIR}/${OUTPREFIX}_2.fastq.gz \
---outFileNamePrefix $OUTPREFIX
+--outFileNamePrefix $OUTPREFIX \
+--outSAMreadID Standard
 
 Notes:
 --quantMode GeneCounts - this is an incredibly useful flag, and tells STAR to count the reads mapping to genes we provide in the annotation file.
@@ -27,4 +28,6 @@ Previously, before STAR incorporated this functionality, tools like htseq-count 
 --outReadsUnmapped Fastx - will generate a fastq file of reads that STAR failed to map
 
 --outMultimapperOrder Random
+
+--outSAMreadID Standard first word (until space) from the FASTx read ID line, removing /1,/2 from the end
 
