@@ -29,3 +29,6 @@ Name of the chromosomes in genome sequence and annotation: **"chromosome 1"**
 
 Genome sequence from Ensemble/iGenomes [here](https://www.ensembl.org/Sus_scrofa/Info/Index) or [here](https://support.illumina.com/sequencing/sequencing_software/igenome.html):
 Name of the chromosomes in genome sequence and annotation: **"1,2,3.."**
+
+
+## Step 2: 
