@@ -9,3 +9,22 @@ cd Path/to/project
 
 Notes:
 --sjdbOverhang: parameter, which “specifies the length of the genomic sequence around the annotated junction to be used in constructing the splice junctions database. Ideally, this length should be equal to the ReadLength-1, where ReadLength is the length of the reads. For instance, for Illumina 2x100b paired-end reads, the ideal value is 100-1=99. In case of reads of varying length, the ideal value is max(ReadLength)-1”
+
+
+Once this job has successfully finished, we should have a STAR folder in the INDEX directory, with the following files:
+
+chrLength.txt
+chrNameLength.txt
+chrName.txt
+chrStart.txt
+exonGeTrInfo.tab
+exonInfo.tab
+geneInfo.tab
+Genome
+genomeParameters.txt
+SA
+SAindex
+sjdbInfo.txt
+sjdbList.fromGTF.out.tab
+sjdbList.out.tab
+transcriptInfo.tab
