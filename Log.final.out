@@ -1,0 +1,63 @@
+ Started job on |	Apr 11 22:24:12
+                             Started mapping on |	Apr 11 22:24:31
+                                    Finished on |	Apr 11 22:25:26
+       Mapping speed, Million of reads per hour |	948.71
+
+                          Number of input reads |	14494191
+                      Average input read length |	50
+                                    UNIQUE READS:
+                   Uniquely mapped reads number |	12803677
+                        Uniquely mapped reads % |	88.34%
+                          Average mapped length |	49.71
+                       Number of splices: Total |	1796475
+            Number of splices: Annotated (sjdb) |	1759113
+                       Number of splices: GT/AG |	1780023
+                       Number of splices: GC/AG |	10905
+                       Number of splices: AT/AC |	1032
+               Number of splices: Non-canonical |	4515
+                      Mismatch rate per base, % |	0.42%
+                         Deletion rate per base |	0.01%
+                        Deletion average length |	1.51
+                        Insertion rate per base |	0.01%
+                       Insertion average length |	1.15
+                             MULTI-MAPPING READS:
+        Number of reads mapped to multiple loci |	944646
+             % of reads mapped to multiple loci |	6.52%
+        Number of reads mapped to too many loci |	16572
+             % of reads mapped to too many loci |	0.11%
+                                  UNMAPPED READS:
+  Number of reads unmapped: too many mismatches |	0
+       % of reads unmapped: too many mismatches |	0.00%
+            Number of reads unmapped: too short |	715567
+                 % of reads unmapped: too short |	4.94%
+                Number of reads unmapped: other |	13729
+                     % of reads unmapped: other |	0.09%
+                                  CHIMERIC READS:
+                       Number of chimeric reads |	0
+                            % of chimeric reads |	0.00%
+                            
+Comments:
+
+    **Unique reads**
+Uniquely mapped reads number: Unique reads indicates the reads is only mapped on one spot.
+Uniquely mapped reads %: The percentage of uniquely mapped reads. This value should not be lower than 80%.
+Average mapped length: Some of the reads might be missing or bad quality, and these reads will be filtered out before alignment. Average mapped length should be as close as possible to the average input read length.
+Number of splices (Total): The number of alternative splicing.
+Number of splices: Annotated(sjdb): the splicing location in the .gtf file
+Number of non-canonical splices: the number of unannotated splices
+Mismatch rate per base: the average mismatch rate in one nucleotide. With good library, this value should be 0.5%-0.8%.
+Deletion rate per base: the average deletion rate in one nucleotide
+Deletion average length: the average of each deletion length
+Insertion rate per base: the average insertion rate in one nucleotide
+Insertion average length: the average of each insertion length
+
+    **Multi-mapping reads**
+Number of reads mapped to multiple loci: the reads mapped on more than on spot, ex: poly-A tail
+% of reads mapped to multiple loci: the percentage of multi-mapping read. Typically, this value should be 5%.
+Number of reads mapped to too many loci: The default value is 10. If the reads mapped more than 10, it will be categorized in “too many loci”.
+% of reads mapped to too many loci: the percentage of too many loci
+
+    **Unmapped reads**
+% of reads unmapped: too many mismatches: the reads that contain too many mismatches. By default, if value is more than (0.3*read length) or 10 bases, it will be categorized in “too many mismatches.”
+% of reads unmapped due to too short: the percentage of reads too short to mapped. The default value of too short is 2/3*read length. This output value is usually associated with sequencing quality.
+% of reads unmapped due to other reasons: the percentage of unmapped due to other causes, such as “too many mismatches.” The reason of unmapped reads might be contaminated with other samples. BLAST the reads is advised for trouble shooting.
